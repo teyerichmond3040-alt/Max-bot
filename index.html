@@ -22,6 +22,11 @@
                     placeholder="Add a new task..."
                     autocomplete="off"
                 >
+                <select id="prioritySelect" class="priority-select">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
                 <button id="addBtn" class="add-btn">Add Task</button>
             </div>
             <div class="filter-buttons">
@@ -58,6 +63,23 @@
         <div class="action-buttons">
             <button id="clearCompleted" class="clear-btn">Clear Completed</button>
             <button id="deleteAll" class="delete-all-btn">Delete All</button>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h2>✏️ Edit Task</h2>
+            <input type="text" id="editInput" placeholder="Task description">
+            <select id="editPriority">
+                <option value="low">Low Priority</option>
+                <option value="medium" selected>Medium Priority</option>
+                <option value="high">High Priority</option>
+            </select>
+            <div class="modal-buttons">
+                <button id="saveEditBtn" class="modal-btn save">Save</button>
+                <button id="cancelEditBtn" class="modal-btn cancel">Cancel</button>
+            </div>
         </div>
     </div>
 
