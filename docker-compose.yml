@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  accumulator-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: max-accumulator-bot
+    environment:
+      - EXCHANGE_ID=binance
+      - API_KEY=${API_KEY}
+      - API_SECRET=${API_SECRET}
+      - INITIAL_BALANCE=1
+      - TARGET_BALANCE=10000
+      - TRADING_PAIRS=BTC/USDT,ETH/USDT,SOL/USDT,XRP/USDT,DOGE/USDT
+      - TIME_LIMIT_MINUTES=180
+      - RISK_PER_TRADE=0.5
+      - USE_LEVERAGE=5
+      - STOP_LOSS_PERCENT=2
+      - TAKE_PROFIT_PERCENT=5
+      - MIN_VOLATILITY=0.8
+      - DEBUG=True
+    volumes:
+      - ./logs:/app/logs
+      - ./trades:/app/trades
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
